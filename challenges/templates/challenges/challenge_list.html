@@ -1,0 +1,21 @@
+<div>
+    <h1><a href="/">Challenges</a></h1>
+</div>
+
+{% for challenge in challenge_list %}
+    <div>
+        <h2><a href="">{{ challenge.title }}</a></h2>
+        <p>Deadline: {{ challenge.end_date }} | Active Solvers: {{challenge.active_solvers}}</p>
+        <p>Pricemoney: ${{ challenge.price}} USD</p>
+        <p><h5> Tags : 
+            {% for tag in challenge.tags.all %}
+                {{tag.title}},
+            {% endfor %}
+
+        </h5> 
+ 
+        </p>
+        <img src="{{ challenge.model_pic.url }}" alt="{{ challenge.title }}" width = "240" />
+        <p>{{ challenge.text|linebreaksbr }}</p>
+    </div>
+{% endfor %}
